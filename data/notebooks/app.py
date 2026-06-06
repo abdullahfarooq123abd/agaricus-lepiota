@@ -130,13 +130,23 @@ st.markdown(
 # LOAD DATA
 # ==================================================
 
+import os
+
 @st.cache_data
 def load_data():
-    return pd.read_excel(
-       df = pd.read_excel("data/agaricus-lepiota.xlsx")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    file_path = os.path.join(
+        current_dir,
+        "..",
+        "agaricus-lepiota.xlsx"
     )
 
+    return pd.read_excel(file_path)
+
 df = load_data()
+
+
 
 # ==================================================
 # SIDEBAR
